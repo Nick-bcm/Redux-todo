@@ -1,0 +1,35 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+
+.none {
+  display: none !important;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 0 30px 0 30px;
+}
+
+.done {
+  text-decoration: line-through;
+  color: grey;
+}
+
+table {
+    width: 284px !important;
+    margin-top: 20px;
+}
+
+.removeBtn {
+    content: url('../img/cross.png');
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.tdicon {
+    width: 32px !important;
+}
+
+.filter{
+  padding-left: 8px;
+}
