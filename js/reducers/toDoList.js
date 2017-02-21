@@ -31,7 +31,7 @@ export default function toDoList(state = [], action) {
 
     case REMOVE_TODO:
       return state.filter(toDoItem => {
-        toDoItem.id !== action.id
+        return toDoItem.id !== action.id
       })
 
     default:
