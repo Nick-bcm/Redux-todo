@@ -2,26 +2,28 @@ import ToDoList from './ToDoList'
 import AddToDoForm from './AddToDoForm'
 import Filters from '../Filters'
 
-const ToDo = () => (
-  <>
-    <div className="row mb-4">
-      <div className="col">
-        <AddToDoForm />
+function ToDo() {
+  return (
+    <>
+      <div className="row mb-4">
+        <div className="col">
+          <AddToDoForm />
+        </div>
       </div>
-    </div>
 
-    <div className="row mb-2">
-      <div className="col">
-        <Filters />
+      <div className="row mb-2">
+        <div className="col">
+          <Filters />
+        </div>
       </div>
-    </div>
 
-    <div className="row w-100">
-      <div className="col-8 col-md-6 m-auto">
-        <ToDoList />
+      <div className="row w-100">
+        <div className="col-8 col-md-6 m-auto">
+          <ToDoList />
+        </div>
       </div>
-    </div>
-  </>
-)
+    </>
+  )
+}
 
 export default ToDo

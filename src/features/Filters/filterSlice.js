@@ -10,10 +10,12 @@ const filtersSlice = createSlice({
   name: 'activeFilter',
   initialState: VISIBILITY_FILTERS.ALL,
   reducers: {
-    setFilter: (state, {payload}) => state = payload,
-  }
+    setFilter: (state, { payload }) => payload,
+  },
 })
 
 export const { setFilter } = filtersSlice.actions
 
 export default filtersSlice.reducer
+
+export const seletActiveFilter = (state) => state.activeFilter

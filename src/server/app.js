@@ -67,7 +67,7 @@ https.createServer(options, (req, res) => {
       }
     })
   })
-}).listen(parseInt(port), () => {
+}).listen(parseInt(port, 10), () => {
   console.log(`\n${new Date()} =================================`)
   console.log(`Server started at ${port}`)
 })

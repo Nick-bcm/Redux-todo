@@ -1,13 +1,13 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { VISIBILITY_FILTERS, setFilter } from './filterSlice'
+import { VISIBILITY_FILTERS, setFilter, seletActiveFilter } from './filterSlice'
 
-const Filters = () => {
+function Filters() {
   const dispatch = useDispatch()
   const filterKeys = Object.keys(VISIBILITY_FILTERS)
-  const activeFilter = useSelector((state) => state.activeFilter)
-  const changeFilter = ({target: {value}}) => dispatch(setFilter(value))
+  const activeFilter = useSelector(seletActiveFilter)
+  const changeFilter = ({ target: { value } }) => dispatch(setFilter(value))
 
   return (
     <div className="btn-group  btn-group-sm" role="group">

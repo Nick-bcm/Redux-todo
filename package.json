@@ -11,7 +11,7 @@
     "build": "yarn run clean && NODE_ENV=production webpack --progress --config webpack.prod.js",
     "heroku-postbuild": "webpack -p --config webpack.config.js --progress",
     "start": "node server.js",
-    "lint": "yarn eslint $(git diff-index --name-only --diff-filter=ACMRTUXB $(git merge-base origin/corporate/master HEAD) | grep  -E \".*src.*.js($|x$)\")"
+    "lint": "yarn eslint $(git diff-index --name-only --diff-filter=ACMRTUXB $(git merge-base origin/master HEAD) | grep  -E \".*src.*.js($|x$)\")"
   },
   "author": "",
   "license": "ISC",

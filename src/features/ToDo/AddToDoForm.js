@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux'
 
 import { createToDo } from './toDoSlice'
 
-const AddToDoForm = () => {
-  const [ newTitle, changeTitle ] = useState('')
+function AddToDoForm() {
+  const [newTitle, changeTitle] = useState('')
   const dispatch = useDispatch()
-  const handleCreate = (title) => dispatch(createToDo(title))
+  // const handleCreate = (title) => dispatch(createToDo(title))
 
   return (
     <form
