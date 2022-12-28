@@ -1,0 +1,9 @@
+{
+  "plugins": ["lodash"],
+  "presets": [
+    "@babel/env",
+    ["@babel/react", {
+      "runtime": "automatic"
+    }],
+  ]
+}
