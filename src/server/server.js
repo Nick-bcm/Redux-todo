@@ -1,18 +1,45 @@
 const express = require('express')
-
-const app = express()
 const path = require('path')
 
-app.set('port', (process.env.PORT || 3000))
+const { PORT } = require('../settings')
+const todos = require('./api/toDos')
 
-// app.use('/', express.static(__dirname));
-// app.use('/', express.static(__dirname + '/public'));
+const { connectDB, disconnectDB } = require('./db')
+
+const app = express()
+
+connectDB()
+
+app.set('port', process.env.PORT || PORT)
+
 app.use('/', express.static(path.resolve('../../public')))
-// app.use(express.static(path.join(__dirname, 'public')))
-// app.get('/', function (req, res) {
-//   res.send('root');
-// });
+app.use('/api/todos', todos)
 
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log(`Server started: http://localhost:${app.get('port')}/`)
 })
+
+// setInterval(
+//   () =>
+//     server.getConnections((err, connections) =>
+//       console.log(`${connections} connections currently open`)
+//     ),
+//   1000
+// )
+
+function shutDown() {
+  console.log('Received kill signal, shutting down gracefully')
+  server.close(() => {
+    console.log('Closed out remaining connections')
+    disconnectDB()
+    process.exit(0)
+  })
+
+  setTimeout(() => {
+    console.error('Could not close connections in time, forcefully shutting down')
+    process.exit(1)
+  }, 10000)
+}
+
+process.on('SIGTERM', shutDown)
+process.on('SIGINT', shutDown)

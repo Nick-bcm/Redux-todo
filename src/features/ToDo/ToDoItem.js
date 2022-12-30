@@ -1,18 +1,21 @@
 import { useSelector, useDispatch } from 'react-redux'
 
-import { toggleToDo, deleteToDo, selectToDoById } from './toDoSlice'
+import { updateToDo, deleteToDo, selectToDoById } from './toDoSlice'
 
 function ToDoItem({ id }) {
-  const { title, isDone } = useSelector((state) => selectToDoById(state, id))
+  const { title, isDone, isDeleting, isSaving } = useSelector((state) => (
+    selectToDoById(state, id)
+  ))
   const dispatch = useDispatch()
 
-  const handleChange = () => dispatch(toggleToDo(id))
+  const handleChange = () => dispatch(updateToDo({ id, isDone: !isDone }))
   const handleDelete = () => dispatch(deleteToDo(id))
 
   return (
     <div className="row g-0">
       <div className="col-auto">
         <button
+          disabled={isSaving}
           type="button"
           className="btn btn-default"
           onClick={handleChange}
@@ -28,8 +31,13 @@ function ToDoItem({ id }) {
           type="button"
           className="btn btn-default"
           onClick={handleDelete}
+          disabled={isDeleting}
         >
-          <i className="bi bi-trash text-white" />
+          {isDeleting ? (
+            <i className="spinner-border spinner-border-sm text-white" />
+          ) : (
+            <i className="bi bi-trash text-white" />
+          )}
         </button>
       </div>
     </div>
