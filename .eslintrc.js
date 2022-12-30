@@ -34,7 +34,7 @@ module.exports = {
         'webpack.dev.js',
         'webpack.stage.js',
         'webpack.prod.js',
-        'src/server/*'
+        'src/server/**/*.js'
       ],
       rules: {
         'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
